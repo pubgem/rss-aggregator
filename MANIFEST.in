@@ -1,0 +1,6 @@
+recursive-include rss_aggregator/views *
+recursive-include skels *
+include Readme.rst
+include requirements.txt
+include rss_aggregator/migrations/alembic.ini
+include rss_aggregator/migrations/script.py.mako
