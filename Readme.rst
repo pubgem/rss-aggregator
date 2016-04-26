@@ -30,4 +30,10 @@ Usage
 Documentation
 ^^^^^^^^^^^^^
 
+Libraries
+^^^^^^^^^
+* `feedparser <https://pythonhosted.org/feedparser/>`_
+* Postgresql
+* SqlAlchemy + Flask
+
 http://project.pubgem.com
