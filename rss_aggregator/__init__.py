@@ -9,10 +9,6 @@ from flask.ext.diamond.ext.administration import AdminView, AdminModelView
 app_instance = None
 
 
-# import models after setting up the other objects
-from . import models
-
-
 class rss_aggregator(Diamond):
     def init_administration(self):
         "Initialize admin interface"
@@ -45,7 +41,7 @@ class rss_aggregator(Diamond):
 def create_app():
     global app_instance
     if not app_instance:
-        app_instance = test_app()
+        app_instance = rss_aggregator()
         app_instance.init_app(
             extensions=[
                 "configuration",

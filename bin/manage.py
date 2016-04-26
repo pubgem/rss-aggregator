@@ -10,7 +10,7 @@ from flask.ext.script import Manager, Shell, Server
 from flask.ext.migrate import Migrate, MigrateCommand, upgrade
 import alembic
 import alembic.config
-from rss_aggregator import create_app, db, models
+from rss_aggregator import create_app, db
 
 app = create_app()
 migrate = Migrate(app, db, directory="rss_aggregator/migrations")
@@ -20,7 +20,6 @@ def _make_context():
     return {
         "app": app,
         "db": db,
-        "models": models,
     }
 
 manager = Manager(app)
@@ -35,11 +34,12 @@ manager.add_command('db', MigrateCommand)
 @manager.option('-a', '--admin', help='make user an admin user', action='store_true', default=None)
 def useradd(email, password, admin):
     "add a user to the database"
+    from flask_diamond.models.user import User
     if admin:
         roles = ["Admin"]
     else:
         roles = ["User"]
-    models.User.register(
+    User.register(
         email=email,
         password=password,
         confirmed=True,
@@ -50,7 +50,8 @@ def useradd(email, password, admin):
 @manager.option('-e', '--email', help='email address', required=True)
 def userdel(email):
     "delete a user from the database"
-    obj = models.User.find(email=email)
+    from flask_diamond.models.user import User
+    obj = User.find(email=email)
     if obj:
         obj.delete()
         print("Deleted")
@@ -65,7 +66,7 @@ def init_db(migration):
 
     if migration:
         # create database using migrations
-        print "applying migration"
+        print("applying migration")
         upgrade()
     else:
         # create database from model schema directly
@@ -78,14 +79,15 @@ def init_db(migration):
 @manager.command
 def populate_db():
     "insert a default set of objects"
-    models.User.add_system_users()
+    from flask_diamond.models.user import User
+    User.add_system_users()
 
 
 if __name__ == "__main__":
     try:
         manager.run()
-    except Exception, e:
+    except Exception as e:
         ex_type, ex, tb = sys.exc_info()
         traceback.print_tb(tb)
-        print "Error: %s" % e
-        print "Line: %d" % sys.exc_traceback.tb_lineno
+        print("Error: %s" % e)
+        print("Line: %d" % sys.exc_traceback.tb_lineno)
