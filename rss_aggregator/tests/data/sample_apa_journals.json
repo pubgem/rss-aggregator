@@ -102,7 +102,7 @@
         "url": "http://www.tandfonline.com/action/showFeed?ui=0&mi=78dcn5&ai=2gr&jc=hbem20&type=etoc&feed=rss",
     },
     {
-        "name": "New Media \& Society",
+        "name": "New Media & Society",
         "schema": "sage",
         "subreddit": "nms",
         "url": "http://nms.sagepub.com/rss/current.xml",
@@ -126,7 +126,7 @@
         "url": "http://onlinelibrary.wiley.com/rss/journal/10.1111/(ISSN)1083-6101",
     },
     {
-        "name": "Sociological Methods \& Research",
+        "name": "Sociological Methods & Research",
         "schema": "sage",
         "subreddit": "smr",
         "url": "http://smr.sagepub.com/rss/current.xml",
@@ -138,7 +138,7 @@
         "url": "http://www.tandfonline.com/action/showFeed?ui=0&mi=78dcn5&ai=1cl&jc=witp20&type=etoc&feed=rss",
     },
     {
-        "name": "Bulletin of Science, Technology, \& Society",
+        "name": "Bulletin of Science, Technology, & Society",
         "schema": "sage",
         "subreddit": "bsts",
         "url": "http://bst.sagepub.com/rss/current.xml",
