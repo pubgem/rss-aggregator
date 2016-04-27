@@ -14,6 +14,7 @@ requirements:
 clean:
 	rm -rf build dist *.egg-info
 	-rm `find . -name "*.pyc"`
+	find . -name "__pycache__" -delete
 
 server:
 	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py runserver
