@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # rss-aggregator (c) pubgem
 
 from nose.plugins.attrib import attr

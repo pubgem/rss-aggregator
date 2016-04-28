@@ -34,6 +34,8 @@ setup(
         "rss_aggregator.migrations",
         "rss_aggregator.migrations.versions",
         "rss_aggregator.models",
+        "rss_aggregator.tests",
+        "rss_aggregator.tests.models",
         "rss_aggregator.views",
         "rss_aggregator.views.administration",
     ],

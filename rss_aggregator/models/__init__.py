@@ -1,2 +1,3 @@
 # rss-aggregator (c) pubgem
-from .entry import Entry
+from .rss_entry import RSSEntry
+from .rss_feed import RSSFeed
