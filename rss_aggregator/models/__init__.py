@@ -1,2 +1,2 @@
-# -*- coding: utf-8 -*-
 # rss-aggregator (c) pubgem
+from .entry import Entry

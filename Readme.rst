@@ -25,6 +25,8 @@ Usage
     diamond-scaffold.sh ~/Documents/new-project
     cd ~/Documents/new-project
     mkvirtualenv -a . new-project
+    apt-get install postgresql
+    sudo su - postgres -c "createuser -s -d rss_aggregator"
     make install docs test db server
 
 Documentation
