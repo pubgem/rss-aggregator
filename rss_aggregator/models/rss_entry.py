@@ -5,7 +5,6 @@ from rss_aggregator import db
 
 
 class RSSEntry(db.Model, CRUDMixin, MarshmallowMixin):
-    # __tablename__ = "entry"
     id = db.Column(db.Integer(), primary_key=True)
 
     raw_xml = db.Column(db.Text)
@@ -16,4 +15,8 @@ class RSSEntry(db.Model, CRUDMixin, MarshmallowMixin):
     title = db.Column(db.String(50))
     issue = db.Column(db.Integer)
     volume = db.Column(db.Integer)
-    
+    pages = db.Column(db.Integer)
+    www = db.Column(db.String(50))
+
+    rss_feed = db.relationship('RSSFeed', backref=db.backref('rss_entry', lazy='dynamic'))
+    rss_feed_id = db.Column(db.Integer, db.ForeignKey("rss_feed.id"))

@@ -16,4 +16,3 @@ class RSSFeed(db.Model, CRUDMixin, MarshmallowMixin):
     issn = db.Column(db.String(25))
     isbn = db.Column(db.String(25))
     publisher = db.Column(db.String(25))
-
