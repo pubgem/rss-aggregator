@@ -51,6 +51,7 @@ def create_app():
         application.bootup("configuration")
         application.bootup("logs")
         application.bootup("database")
+        # application.bootup("marshalling")
         application.bootup("accounts")
         application.bootup("blueprints")
         application.bootup("signals")

@@ -19,9 +19,9 @@ class RSSFeedTestCase(DiamondTestCase):
     @attr('single')
     def test_create(self):
         "Testing rss_aggregator.models.RSSFeed.create"
-        rss_feed = models.RSSFeed.create(
+        models.RSSFeed.create(
             name="Generic Feed",
             rss_url="https://www.genericfeed.com/feed.xml",
         )
-        rss_feed = models.RSSFeed.find(rss_feed)
-        self.assertIsNotNone(rss_feed, "Object retrievible.")
+        retrieved = models.RSSFeed.find(name="Generic Feed")
+        self.assertIsNotNone(retrieved, "Object retrievible.")
