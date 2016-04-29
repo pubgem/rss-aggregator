@@ -2,22 +2,19 @@
 # rss-aggregator (c) pubgem
 
 from nose.plugins.attrib import attr
-from flask.ext.testing import TestCase
-from flask.ext.diamond.mixins.testing import DiamondTestCaseMixin
-# from ..models import User
+from .mixins import DiamondTestCase
 from .fixtures import typical_workflow
+from ..models import User
 
 
-# class WorkflowTestCase(DiamondTestCaseMixin, TestCase):
-#     def setUp(self):
-#         super(WorkflowTestCase, self).setUp()
-#         typical_workflow()
+class WorkflowTestCase(DiamondTestCase):
+    def setUp(self):
+        super(WorkflowTestCase, self).setUp()
+        typical_workflow()
 
-#     # @attr("single")
-#     def test_user(self):
-#         "user created in workflow"
-#         User.add_system_users()
-
-#         u = User.find(email='guest')
-#         assert u
-#         assert u.email == 'guest'
+    @attr("single")
+    def test_user(self):
+        "user created in typical_workflow during setUp"
+        u = User.find(email='guest')
+        assert u
+        assert u.email == 'guest'
