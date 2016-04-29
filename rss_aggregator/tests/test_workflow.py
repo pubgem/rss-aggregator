@@ -12,7 +12,7 @@ class WorkflowTestCase(DiamondTestCase):
         super(WorkflowTestCase, self).setUp()
         typical_workflow()
 
-    @attr("single")
+    # @attr("single")
     def test_user(self):
         "user created in typical_workflow during setUp"
         u = User.find(email='guest')

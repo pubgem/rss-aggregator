@@ -1,13 +1,12 @@
 # rss-aggregator (c) pubgem
 
 from nose.plugins.attrib import attr
-from flask.ext.testing import TestCase
-from flask.ext.diamond.mixins.testing import DiamondTestCaseMixin
+from ..mixins import DiamondTestCase
 from ... import models
 from ... import db
 
 
-class RSSFeedTestCase(DiamondTestCaseMixin, TestCase):
+class RSSFeedTestCase(DiamondTestCase):
     "Coverage for models.RSSFeed"
 
     def setUp(self):
