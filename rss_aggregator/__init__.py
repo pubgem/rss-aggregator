@@ -47,11 +47,10 @@ def create_app():
     global application
     if not application:
         application = rss_aggregator()
-        application.init()
         application.bootup("configuration")
         application.bootup("logs")
         application.bootup("database")
-        # application.bootup("marshalling")
+        application.bootup("marshalling")
         application.bootup("accounts")
         application.bootup("blueprints")
         application.bootup("signals")
