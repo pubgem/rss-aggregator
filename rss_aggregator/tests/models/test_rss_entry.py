@@ -22,15 +22,19 @@ class RSSEntryTestCase(DiamondTestCase):
             title="Generic Entry",
             doi="10.1000/123456",
             date=datetime.datetime(12, 12, 12, 12, 12, 12),
+            rss_feed=fixtures.typical_rss_feed()
         )
         retrieved = models.RSSEntry.find(title="Generic Entry")
         self.assertIsNotNone(retrieved, "Object retrievible.")
 
-    # @attr('single')
+    @attr('single')
     def test_read(self):
-        "Testing rss_aggregator.models.RSSEntry.find"
+        "Testing rss_aggregator.models.RSSEntry.find + relationship(s)"
         retrieved = fixtures.typical_rss_entry()
         self.assertEquals(retrieved.doi, "10.1000/123456", "Attributes readable.")
+
+        self.assertEquals(retrieved.rss_feed, fixtures.typical_rss_feed(), "Relationship holds.")
+        self.assertEquals(fixtures.typical_rss_feed().rss_entry.first(), retrieved, "Reverse-relationship holds.")
 
     # @attr('single')
     def test_update(self):

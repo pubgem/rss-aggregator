@@ -15,4 +15,5 @@ def typical_rss_entry():
             title="Generic Entry",
             doi="10.1000/123456",
             date=datetime.datetime(12, 12, 12, 12, 12, 12),
+            rss_feed=typical_rss_feed(),
         )
