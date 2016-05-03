@@ -1,9 +1,10 @@
 # rss-aggregator (c) pubgem
 
-from nose.plugins.attrib import attr
 from ..mixins import DiamondTestCase
-from ... import models
 from ... import db
+from ... import models
+from . import fixtures
+from nose.plugins.attrib import attr
 
 
 class RSSFeedTestCase(DiamondTestCase):
@@ -12,9 +13,6 @@ class RSSFeedTestCase(DiamondTestCase):
     def setUp(self):
         db.drop_all()
         db.create_all()
-
-    def tearDown(self):
-        super().tearDown()
 
     # @attr('single')
     def test_create(self):
@@ -29,24 +27,15 @@ class RSSFeedTestCase(DiamondTestCase):
     # @attr('single')
     def test_read(self):
         "Testing rss_aggregator.models.RSSFeed.find"
-        models.RSSFeed.create(
-            name="Generic Feed",
-            rss_url="https://www.genericfeed.com/feed.xml",
-        )
-
-        retrieved = models.RSSFeed.find(name="Generic Feed")
+        retrieved = fixtures.typical_rss_feed()
         self.assertEquals(retrieved.rss_url, "https://www.genericfeed.com/feed.xml", "Attributes readable.")
 
     # @attr('single')
     def test_update(self):
         "Testing rss_aggregator.models.RSSFeed.update"
-        models.RSSFeed.create(
-            name="Generic Feed",
-            rss_url="https://www.genericfeed.com/feed.xml",
-        )
+        retrieved = fixtures.typical_rss_feed()
 
-        retrieved = models.RSSFeed.find(name="Generic Feed")
-        new_attribute = "null"
+        new_attribute = "https://generic.com/feed.xml"
         retrieved.update(rss_url=new_attribute)
 
         retrieved = models.RSSFeed.find(name="Generic Feed")
@@ -55,12 +44,7 @@ class RSSFeedTestCase(DiamondTestCase):
     # @attr('single')
     def test_delete(self):
         "Testing rss_aggregator.models.RSSFeed.delete"
-        models.RSSFeed.create(
-            name="Generic Feed",
-            rss_url="https://www.genericfeed.com/feed.xml",
-        )
-
-        retrieved = models.RSSFeed.find(name="Generic Feed")
+        retrieved = fixtures.typical_rss_feed()
         self.assertIsNotNone(retrieved, "Object retrievible.")
 
         retrieved.delete()

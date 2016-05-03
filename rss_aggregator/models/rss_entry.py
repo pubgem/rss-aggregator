@@ -11,7 +11,7 @@ class RSSEntry(db.Model, CRUDMixin, MarshmallowMixin):
     date = db.Column(db.DateTime)
     doi = db.Column(db.String(50))
 
-    authors = db.Column(db.Text)  # TODO: Data structure, separat table, or just string?
+    authors = db.Column(db.Text)  # TODO: Data structure beyond just a string?
     title = db.Column(db.String(50))
     issue = db.Column(db.Integer)
     volume = db.Column(db.Integer)
