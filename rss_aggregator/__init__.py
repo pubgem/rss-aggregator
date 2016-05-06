@@ -21,6 +21,8 @@ class rss_aggregator(Diamond):
         admin = self.super("administration", user=User, role=Role)
 
         model_list = [
+            models.RSSFeed,
+            models.RSSEntry,
         ]
 
         for model in model_list:
@@ -63,6 +65,8 @@ def create_app():
         # application.bootup("email")
         # application.bootup("debugger")
         # application.bootup("task_queue")
+
+
 
     # print application.app.url_map
     return application.app

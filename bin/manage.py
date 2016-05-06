@@ -88,10 +88,11 @@ def populate_db():
 @manager.command
 def rssfeed_add(json_file):
     """
-    Adds RSS Feeds based on a JSON file.
+    Adds RSS Feeds from a JSON file.
     """
     from rss_aggregator import models
-    models.RSSFeed.loadf(json_file)
+    with open(json_file, 'r') as f:
+        models.RSSFeed.loadf(f)
 
 if __name__ == "__main__":
     try:
