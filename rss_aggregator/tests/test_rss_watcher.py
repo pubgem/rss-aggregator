@@ -2,6 +2,7 @@
 
 from . mixins import DiamondTestCase
 from .. import models
+from ..rss_watcher import RSSWatcher
 from .. import db
 from . import fixtures
 import datetime
@@ -19,8 +20,10 @@ class RSSWatcherTestCase(DiamondTestCase):
         self.assertIsNotNone(models.RSSFeed.find(
             **{"name": "Journal of Personality and Social Psychology"}),
             "Fixture created.")
+        self.rss_watcher = RSSWatcher()
 
     @attr('single')
-    def test_me(self):
-        "Testing test_me"
-        self.assertEquals(1+1, 2)
+    def test_watch(self):
+        "Testing RSSWatcher.watch"
+        self.rss_watcher.watch()
+        assert False
