@@ -85,6 +85,14 @@ def populate_db():
     User.add_admin_user(password="aaa")
 
 
+@manager.command
+def rssfeed_add(json_file):
+    """
+    Adds RSS Feeds based on a JSON file.
+    """
+    from rss_aggregator import models
+    models.RSSFeed.loadf(json_file)
+
 if __name__ == "__main__":
     try:
         manager.run()
