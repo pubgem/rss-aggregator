@@ -14,14 +14,19 @@ class RSSWatcher:
         """
         all_rss_feeds = [feed for feed in models.RSSFeed.query.all()]
 
-        for feed in all_rss_feeds:
-            print(feed.name, feed.rss_url)
+        for rss_feed in all_rss_feeds:
+            self.query_rss(rss_feed)
 
-    def query_rss(self, rss):
+    def query_rss(self, rss_feed):
         """
         Queries the RSS Feed, checks for a new entry.
         """
-        feedparser.parse(rss)
+        d = feedparser.parse(rss_feed.rss_url)
+        for i in d['feed']:
+            # Iterate through the feed, check if entry is new
+            # If new, call checkin_entry, if not, ignore.
+            # How to determine if is new? -> check other RSS aggregators
+            pass
 
     def checkin_entry(self):
         """

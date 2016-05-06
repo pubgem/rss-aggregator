@@ -23,7 +23,7 @@ class RSSFeed(db.Model, CRUDMixin, MarshmallowMixin):
     id = db.Column(db.Integer(), primary_key=True)
 
     name = db.Column(db.String(50))
-    rss_url = db.Column(db.String(50))
+    rss_url = db.Column(db.String(150))
     doi = db.Column(db.String(50))
     parser_class = db.Column(db.String(15))
 

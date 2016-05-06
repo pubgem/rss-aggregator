@@ -26,4 +26,3 @@ class RSSWatcherTestCase(DiamondTestCase):
     def test_watch(self):
         "Testing RSSWatcher.watch"
         self.rss_watcher.watch()
-        assert False
