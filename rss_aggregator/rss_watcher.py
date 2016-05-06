@@ -7,10 +7,7 @@ class RSSWatcher:
     RSSWatcher checks for new entries in a journal's RSS feed and commits them to the database.
     """
 
-    def __init__(self):
-        pass
-
-    def query_feeds(self, ):
+    def watch(self):
         """
         Iterates through all of the RSSFeeds.
 
@@ -19,11 +16,11 @@ class RSSWatcher:
         """
         pass
 
-    def query_rss(self):
+    def query_rss(self, rss):
         """
         Queries the RSS Feed for a new entry
         """
-        pass
+        feedparser.parse(rss)
 
     def checkin_entry(self):
         """

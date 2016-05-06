@@ -27,7 +27,7 @@ class RSSEntryTestCase(DiamondTestCase):
         retrieved = models.RSSEntry.find(title="Generic Entry")
         self.assertIsNotNone(retrieved, "Object retrievible.")
 
-    @attr('single')
+    # @attr('single')
     def test_read(self):
         "Testing rss_aggregator.models.RSSEntry.find + relationship(s)"
         retrieved = fixtures.typical_rss_entry()
