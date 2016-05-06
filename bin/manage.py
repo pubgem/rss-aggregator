@@ -94,6 +94,14 @@ def rssfeed_add(json_file):
     with open(json_file, 'r') as f:
         models.RSSFeed.loadf(f)
 
+
+@manager.command
+def watch():
+    "Invokes the RSS watcher"
+    from rss_aggregator.rss_watcher import RSSWatcher
+    rss_watcher = RSSWatcher()
+    rss_watcher.watch()
+
 if __name__ == "__main__":
     try:
         manager.run()

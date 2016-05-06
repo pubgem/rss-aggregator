@@ -1,4 +1,5 @@
 # rss-aggregator (c) pubgem
+from . import models
 import feedparser
 
 
@@ -10,11 +11,14 @@ class RSSWatcher:
     def watch(self):
         """
         Iterates through all of the RSSFeeds.
-
-        :param :
-        :type :
         """
-        pass
+        all_rss_feeds = map(
+            lambda feed: feed,
+            models.RSSFeed.query.all()
+        )
+
+        for feed in all_rss_feeds:
+            print(feed.name, feed.url)
 
     def query_rss(self, rss):
         """

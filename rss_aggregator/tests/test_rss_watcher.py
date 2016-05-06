@@ -1,11 +1,11 @@
 # rss-aggregator (c) pubgem
 
-from nose.plugins.attrib import attr
 from . mixins import DiamondTestCase
 from .. import models
 from .. import db
 from . import fixtures
 import datetime
+from nose.plugins.attrib import attr
 
 
 class RSSWatcherTestCase(DiamondTestCase):
@@ -16,7 +16,9 @@ class RSSWatcherTestCase(DiamondTestCase):
         db.create_all()
 
         fixtures.offline_rss_feed()
-        self.assertIsNotNone(models.RSSFeed.find(**{"name": "Journal of Personality and Social Psychology"}), "Fixture created.")
+        self.assertIsNotNone(models.RSSFeed.find(
+            **{"name": "Journal of Personality and Social Psychology"}),
+            "Fixture created.")
 
     @attr('single')
     def test_me(self):
