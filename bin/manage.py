@@ -100,7 +100,11 @@ def rssfeed_add(path):
 
 @manager.command
 def watch():
-    "Invokes the RSS watcher"
+    """
+    Invokes the RSS watcher.
+
+    intended to be used with cron every 10 minutes.
+    """
     from rss_aggregator.rss_watcher import RSSWatcher
     rss_watcher = RSSWatcher()
     rss_watcher.watch()

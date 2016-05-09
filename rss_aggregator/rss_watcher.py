@@ -22,6 +22,7 @@ class RSSWatcher:
         Queries the RSS Feed, checks for a new entry.
         """
         d = feedparser.parse(rss_feed.rss_url)
+        import ipdb; ipdb.set_trace()
         for i in d['feed']:
             # Iterate through the feed, check if entry is new
             # If new, call checkin_entry, if not, ignore.
