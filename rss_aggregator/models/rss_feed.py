@@ -1,22 +1,23 @@
 # rss-aggregator (c) pubgem
 from flask.ext.diamond.mixins.crud import CRUDMixin
 from flask.ext.diamond.mixins.marshmallow import MarshmallowMixin
-from .. import db#, ma
+from flask.ext.diamond import ma
+from .. import db
 
 
-# class RSSFeedSchema(ma.Schema):
-#     class Meta:
-#         # RegEx to help transform args to tuple: ^(\w+) =.*
-#         additional = (
-#             "name",
-#             "rss_url",
-#             "doi",
-#             "parser_class",
-#             "www",
-#             "issn",
-#             "isbn",
-#             "publisher",
-#         )
+class RSSFeedSchema(ma.Schema):
+    class Meta:
+        # RegEx to help transform args to tuple: ^(\w+) =.*
+        additional = (
+            "name",
+            "rss_url",
+            "doi",
+            "parser_class",
+            "www",
+            "issn",
+            "isbn",
+            "publisher",
+        )
 
 
 class RSSFeed(db.Model, CRUDMixin, MarshmallowMixin):

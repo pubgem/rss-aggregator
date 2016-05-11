@@ -5,7 +5,7 @@ from flask.ext.diamond import Diamond, db
 from flask.ext.diamond.ext.administration import AdminModelView
 from .models import User, Role
 
-# declare these globalish objects before initializing models
+# declare global app instance
 application = None
 
 
@@ -17,7 +17,6 @@ class rss_aggregator(Diamond):
 
     def init_administration(self):
         "Initialize admin interface"
-
         admin = self.super("administration", user=User, role=Role)
 
         model_list = [

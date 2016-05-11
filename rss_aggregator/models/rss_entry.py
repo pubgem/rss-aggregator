@@ -1,23 +1,24 @@
 # rss-aggregator (c) pubgem
 from flask.ext.diamond.mixins.crud import CRUDMixin
 from flask.ext.diamond.mixins.marshmallow import MarshmallowMixin
-from .. import db#, ma
+from flask.ext.diamond import ma
+from .. import db
 
 
-# class RSSEntrySchema(ma.Schema):
-#     class Meta:
-#         additional = (
-#             "raw_xml",
-#             "date",
-#             "doi",
-#             "authors",
-#             "title",
-#             "issue",
-#             "volume",
-#             "pages",
-#             "www",
-#             "rss_feed_id",
-#         )
+class RSSEntrySchema(ma.Schema):
+    class Meta:
+        additional = (
+            "raw_xml",
+            "date",
+            "doi",
+            "authors",
+            "title",
+            "issue",
+            "volume",
+            "pages",
+            "www",
+            "rss_feed_id",
+        )
 
 
 class RSSEntry(db.Model, CRUDMixin, MarshmallowMixin):

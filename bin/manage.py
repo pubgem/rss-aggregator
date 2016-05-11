@@ -110,10 +110,11 @@ def watch():
     rss_watcher.watch()
 
 if __name__ == "__main__":
-    try:
-        manager.run()
-    except Exception as e:
-        ex_type, ex, tb = sys.exc_info()
-        traceback.print_tb(tb)
-        print("Error: %s" % e)
-        print("Line: %d" % sys.exc_traceback.tb_lineno)
+    manager.run()
+    # try:
+        
+    # except Exception as e:
+    #     ex_type, ex, tb = sys.exc_info()
+    #     traceback.print_tb(tb)
+    #     print("Error: %s" % e)
+    #     print("Line: %d" % sys.exc_traceback.tb_lineno)
