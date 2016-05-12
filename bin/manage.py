@@ -84,6 +84,9 @@ def populate_db():
     User.add_guest_user()
     User.add_admin_user(password="aaa")
 
+    from rss_aggregator.tests import fixtures
+    fixtures.offline_rss_feed()
+
 
 @manager.command
 def rssfeed_add(path):

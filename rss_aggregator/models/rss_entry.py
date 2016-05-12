@@ -31,6 +31,7 @@ class RSSEntry(db.Model, CRUDMixin, MarshmallowMixin):
 
     authors = db.Column(db.Text)  # TODO: Data structure beyond just a string?
     title = db.Column(db.String(50))
+    summary = db.Column(db.Text)
     issue = db.Column(db.Integer)
     volume = db.Column(db.Integer)
     pages = db.Column(db.Integer)
@@ -40,7 +41,7 @@ class RSSEntry(db.Model, CRUDMixin, MarshmallowMixin):
     rss_feed_id = db.Column(db.Integer, db.ForeignKey("rss_feed.id"))
 
     @classmethod
-    def checkin_rss_entry(cls, rss_feed, entry):
+    def checkin_rss_entry(cls, rss_feed, entry, **kwargs):
         """
         Checks in an RSS Entry from an RSS feed.
 
@@ -48,11 +49,17 @@ class RSSEntry(db.Model, CRUDMixin, MarshmallowMixin):
 
         :param entry: models.RSSFeed object
         """
-        import ipdb; ipdb.set_trace()
+        # import ipdb; ipdb.set_trace()
+
         cls.create(
             rss_feed=rss_feed,
-            raw_xml=entry[''],
-            date=parse_rss_timestamp(entry['updated_parsed']),
-            title=entry['title'],
-            authors=entry['']
+
+            # raw_xml=entry[''],  # TODO: Get raw XML from feedparser!
+            doi=entry.dc_identifier,
+            date=parse_rss_timestamp(entry.updated_parsed),
+
+            title=entry.title,
+            authors=entry.author,
+            www=entry.link,
+            summary=entry.summary,
         )

@@ -1,5 +1,6 @@
 # rss-aggregator (c) pubgem
 from .. import db
+from . import RSSEntry
 from ..utils import parse_rss_timestamp
 from flask.ext.diamond.mixins.crud import CRUDMixin
 from flask.ext.diamond.mixins.marshmallow import MarshmallowMixin
@@ -34,6 +35,7 @@ class RSSFeed(db.Model, CRUDMixin, MarshmallowMixin):
     issn = db.Column(db.String(25))
     isbn = db.Column(db.String(25))
     publisher = db.Column(db.String(25))
+    summary = db.Column(db.Text)
 
     def query_feed(self):
         """
@@ -41,10 +43,10 @@ class RSSFeed(db.Model, CRUDMixin, MarshmallowMixin):
         """
         d = feedparser.parse(self.rss_url)
         # self.parse_timestamp(d.feed['updated_parsed'])  # used in later optimization
-        for i in d['feed']:
+        for i in d['entries']:
             # Iterate through the feed, check if entry already exists
-            existing_entry = self.rss_entry.find(
-                title=i['date'],
-                date=parse_rss_timestamp(i['updated_parsed']))
+            existing_entry = self.rss_entry.filter_by(
+                title=i.title,
+                date=parse_rss_timestamp(i.updated_parsed)).all()
             if not existing_entry:
-                self.rss_feed.checkin_entry(self, i)
+                RSSEntry.checkin_rss_entry(self, i)
