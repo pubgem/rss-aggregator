@@ -25,4 +25,5 @@ class RSSWatcherTestCase(DiamondTestCase):
     @attr('single')
     def test_watch(self):
         "Testing RSSWatcher.watch"
+        # import ipdb; ipdb.set_trace()
         self.rss_watcher.watch()
