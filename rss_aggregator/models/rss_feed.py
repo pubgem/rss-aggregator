@@ -20,10 +20,13 @@ class RSSFeedSchema(ma.Schema):
             "issn",
             "isbn",
             "publisher",
+            "summary",
         )
 
 
 class RSSFeed(db.Model, CRUDMixin, MarshmallowMixin):
+    __schema__ = RSSFeedSchema
+
     id = db.Column(db.Integer(), primary_key=True)
 
     name = db.Column(db.String(50))

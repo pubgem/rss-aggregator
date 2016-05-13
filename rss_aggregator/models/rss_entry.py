@@ -23,6 +23,8 @@ class RSSEntrySchema(ma.Schema):
 
 
 class RSSEntry(db.Model, CRUDMixin, MarshmallowMixin):
+    __schema__ = RSSEntrySchema
+
     id = db.Column(db.Integer(), primary_key=True)
 
     raw_xml = db.Column(db.Text)
