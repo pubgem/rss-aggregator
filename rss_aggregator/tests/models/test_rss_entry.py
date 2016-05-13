@@ -57,3 +57,13 @@ class RSSEntryTestCase(DiamondTestCase):
 
         retrieved = models.RSSEntry.find(title="Generic Entry")
         self.assertIsNone(retrieved, "Object deleted.")
+
+    @attr('single')
+    def test_schema(self):
+        "Testing rss_aggregator.models.RSSEntry.__schema__"
+        import marshmallow
+        self.assertEquals(
+            isinstance(models.RSSEntry.__schema__, marshmallow.schema.SchemaMeta),
+            True,
+            "Schema declared successfully."
+        )
