@@ -34,12 +34,12 @@ class RSSFeed(db.Model, CRUDMixin, MarshmallowMixin):
     www = db.Column(db.String(50))
     issn = db.Column(db.String(25))
     isbn = db.Column(db.String(25))
-    publisher = db.Column(db.String(25))
+    publisher = db.Column(db.String(50))
     summary = db.Column(db.Text)
 
-    def query_feed(self):
+    def aggregate(self):
         """
-        Queries the RSS Feed, checks for a new entry and checks-in new entry
+        Queries the RSS Feed, checks for a new entry, and checks-in new entry.
         """
         d = feedparser.parse(self.rss_url)
         # self.parse_timestamp(d.feed['updated_parsed'])  # used in later optimization

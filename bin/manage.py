@@ -102,7 +102,7 @@ def rssfeed_add(path):
 
 
 @manager.command
-def watch():
+def aggregate():
     """
     Invokes the RSS watcher.
 
@@ -115,7 +115,7 @@ def watch():
 if __name__ == "__main__":
     manager.run()
     # try:
-        
+
     # except Exception as e:
     #     ex_type, ex, tb = sys.exc_info()
     #     traceback.print_tb(tb)

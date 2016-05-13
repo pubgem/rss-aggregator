@@ -20,4 +20,4 @@ class RSSWatcher:
         all_rss_feeds = [feed for feed in models.RSSFeed.query.all()]
 
         for rss_feed in all_rss_feeds:
-            rss_feed.query_feed()
+            rss_feed.aggregate()

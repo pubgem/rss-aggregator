@@ -21,7 +21,7 @@ class RSSWatcherTestCase(DiamondTestCase):
             "Fixture created.")
         self.rss_watcher = RSSWatcher()
 
-    @attr('single')
+    # @attr('single')
     def test_watch(self):
         """
         Testing RSSWatcher.watch

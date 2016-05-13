@@ -27,15 +27,15 @@ class RSSEntry(db.Model, CRUDMixin, MarshmallowMixin):
 
     raw_xml = db.Column(db.Text)
     date = db.Column(db.DateTime)
-    doi = db.Column(db.String(50))
+    doi = db.Column(db.String(30))
 
     authors = db.Column(db.Text)  # TODO: Data structure beyond just a string?
-    title = db.Column(db.String(50))
+    title = db.Column(db.Text)
     summary = db.Column(db.Text)
     issue = db.Column(db.Integer)
     volume = db.Column(db.Integer)
     pages = db.Column(db.Integer)
-    www = db.Column(db.String(50))
+    www = db.Column(db.Text)
 
     rss_feed = db.relationship('RSSFeed', backref=db.backref('rss_entry', lazy='dynamic'))
     rss_feed_id = db.Column(db.Integer, db.ForeignKey("rss_feed.id"))
@@ -51,7 +51,7 @@ class RSSEntry(db.Model, CRUDMixin, MarshmallowMixin):
         """
         # import ipdb; ipdb.set_trace()
 
-        cls.create(
+        return cls.create(
             rss_feed=rss_feed,
 
             # raw_xml=entry[''],  # TODO: Get raw XML from feedparser!

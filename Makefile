@@ -22,6 +22,9 @@ server:
 shell:
 	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py shell
 
+aggregate:
+	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py aggregate
+
 watch:
 	watchmedo shell-command -R -p "*.py" -c 'echo \\n\\n\\n\\nSTART; date; $(TEST_CMD) -c etc/nose/test-single.cfg; date' .
 
@@ -64,4 +67,4 @@ notebook:
 release:
 	python setup.py sdist upload -r https://pypi.python.org/pypi
 
-.PHONY: clean install test server watch notebook db single docs shell upgradedb migratedb release requirements apidocs gh-pages
+.PHONY: clean install test server watch notebook db single docs shell upgradedb migratedb release requirements apidocs gh-pages aggregate
