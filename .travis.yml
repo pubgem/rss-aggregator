@@ -7,5 +7,4 @@ install: make install
 # command to run tests
 script: make test
 notifications:
-  webhooks: https://mattermost.pubgem.com/hooks/xtrddiopcifop8w6oo1hh8nxsh
-
+  slack: pubgem:PnolDHCaK86h14XrKpgE49cH
