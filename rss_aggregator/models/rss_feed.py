@@ -43,6 +43,7 @@ class RSSFeed(db.Model, CRUDMixin, MarshmallowMixin):
         """
         d = feedparser.parse(self.rss_url)
         # self.parse_timestamp(d.feed['updated_parsed'])  # used in later optimization
+        # Feedparser.Bozo flag
         for i in d['entries']:
             # Iterate through the feed, check if entry already exists
             existing_entry = self.rss_entry.filter_by(
