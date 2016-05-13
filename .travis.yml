@@ -6,5 +6,6 @@ python:
 install: make install
 # command to run tests
 script: make test
+# notify slack
 notifications:
   slack: pubgem:PnolDHCaK86h14XrKpgE49cH
