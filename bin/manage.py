@@ -89,16 +89,20 @@ def populate_db():
 
 
 @manager.command
-def rssfeed_add(path):
+def rssfeed_add_list(path):
     """
-    Adds RSS Feeds from a JSON file.
+    Adds RSS Feeds from a JSON file. Expecting a list.
 
     :param path: path to JSON file.
     :type path: str
     """
+    from json import JSONDecoder
     from rss_aggregator import models
+    d = JSONDecoder()
+
     with open(path, 'r') as f:
-        models.RSSFeed.loadf(f)
+        for i in d.decode(f.read()):
+            models.RSSFeed.load(i)
 
 
 @manager.command
