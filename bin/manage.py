@@ -86,6 +86,7 @@ def populate_db():
 
     from rss_aggregator.tests import fixtures
     fixtures.offline_rss_feed()
+    rssfeed_add_list('./rss_aggregator/tests/data/sample_apa_journals.json')
 
 
 @manager.command
