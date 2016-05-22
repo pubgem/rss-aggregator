@@ -13,7 +13,7 @@ requirements:
 
 clean:
 	rm -rf build dist *.egg-info
-	-rm `find . -name "*.pyc"`
+	find . -name "*.pyc" -delete
 	find . -name "__pycache__" -delete
 
 server:

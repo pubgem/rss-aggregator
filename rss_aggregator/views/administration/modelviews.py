@@ -4,9 +4,7 @@
 import flask
 import flask.ext.security as security
 from flask.ext.admin import expose
-from flask.ext.diamond.ext.administration import AuthModelView, AdminIndexView
-
-from rss_aggregator import db
+from flask.ext.diamond.facets.administration import AdminIndexView
 
 
 adminbaseview = flask.Blueprint('adminbaseview', __name__,

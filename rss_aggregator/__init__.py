@@ -2,7 +2,7 @@
 # rss-aggregator (c) pubgem
 
 from flask.ext.diamond import Diamond, db
-from flask.ext.diamond.ext.administration import AdminModelView
+from flask.ext.diamond.facets.administration import AdminModelView
 from .models import User, Role
 
 # declare global app instance
@@ -48,24 +48,22 @@ def create_app():
     global application
     if not application:
         application = rss_aggregator()
-        application.bootup("configuration")
-        application.bootup("logs")
-        application.bootup("database")
-        application.bootup("marshalling")
-        application.bootup("accounts")
-        application.bootup("blueprints")
-        application.bootup("signals")
-        application.bootup("forms")
-        application.bootup("error_handlers")
-        application.bootup("request_handlers")
-        application.bootup("administration")
-        # application.bootup("rest")
-        # application.bootup("webassets")
-        # application.bootup("email")
-        # application.bootup("debugger")
-        # application.bootup("task_queue")
-
-
+        application.facet("configuration")
+        application.facet("logs")
+        application.facet("database")
+        application.facet("marshalling")
+        application.facet("accounts")
+        application.facet("blueprints")
+        application.facet("signals")
+        application.facet("forms")
+        application.facet("error_handlers")
+        application.facet("request_handlers")
+        application.facet("administration")
+        # application.facet("rest")
+        # application.facet("webassets")
+        # application.facet("email")
+        # application.facet("debugger")
+        # application.facet("task_queue")
 
     # print application.app.url_map
     return application.app
