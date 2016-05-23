@@ -2,7 +2,7 @@
 
 from nose.plugins.attrib import attr
 from .mixins import DiamondTestCase
-from ..models import PubgemUser as User
+from ..models import User
 
 
 class UserTestCase(DiamondTestCase):

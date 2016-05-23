@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # rss-aggregator (c) pubgem
 
-from ..models import Role, PubgemUser as User
+from ..models import Role, User
 from .. import models
 import os
 
@@ -20,6 +20,7 @@ def offline_rss_feed():
     return models.RSSFeed.find_or_create(
         **{
             "name": "Journal of Personality and Social Psychology",
+            "parser_class": "apa",
             "rss_url": os.path.join(MODULE_PATH, "data/psp.rss"),
         }
     )

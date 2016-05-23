@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block htmlhead %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('diamond_blueprint.static', filename='style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('diamond_blueprint.static', filename='favicon.ico') }}">
+    <title>{% block title %}{% endblock %} - pubgem</title>
+</head>
+<body {% block bodyclass %}{% endblock %}>
+  {% block navigation %}{% endblock %}
+  {% block heading %}{% endblock %}
+
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
+
+  <div id="footer">
+    {% block footer %}
+    pubgem
+    {% endblock %}
+  </div>
+
+{% block scripts %}{% endblock %}
+</body>

@@ -12,6 +12,6 @@ class ViewTestCase(DiamondTestCase):
         assert b'Login' in rv.data
 
     def test_index(self):
-        "ensure index is redirecting"
+        "ensure index is not redirecting"
         rv = self.client.get('/')
-        assert rv.status_code == 302
+        assert rv.status_code == 200

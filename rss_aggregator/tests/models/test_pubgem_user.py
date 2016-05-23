@@ -13,12 +13,12 @@ class RSSEntryTestCase(DiamondTestCase):
     def setUp(self):
         db.drop_all()
         db.create_all()
-        models.PubgemUser.add_guest_user()
+        models.User.add_guest_user()
 
     # @attr('single')
     def test_subscribe(self):
-        "Testing models.PubgemUser.subscribe"
-        user = models.PubgemUser.find(name="guest", email="guest@example.com")
+        "Testing models.User.subscribe"
+        user = models.User.find(name="guest", email="guest@example.com")
         rss_feed = fixtures.typical_rss_feed()
         user.subscribe(rss_feed)
         self.assertEquals(len(user.subscriptions), 1, "Subscription addition as expected")
