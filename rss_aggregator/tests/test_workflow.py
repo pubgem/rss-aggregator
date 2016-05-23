@@ -4,7 +4,7 @@
 from nose.plugins.attrib import attr
 from .mixins import DiamondTestCase
 from .fixtures import typical_workflow
-from ..models import PubgemUser as User
+from ..models import User
 
 
 class WorkflowTestCase(DiamondTestCase):
