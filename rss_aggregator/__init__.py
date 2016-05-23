@@ -43,6 +43,9 @@ class rss_aggregator(Diamond):
         from .views.administration.modelviews import adminbaseview
         self.app.register_blueprint(adminbaseview)
 
+        from .views.frontpage import frontpage
+        self.app.register_blueprint(frontpage)
+
 
 def create_app():
     global application

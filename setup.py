@@ -38,6 +38,7 @@ setup(
         "rss_aggregator.tests.models",
         "rss_aggregator.views",
         "rss_aggregator.views.administration",
+        "rss_aggregator.views.frontpage",
     ],
     scripts=[
         "bin/runserver.py",
