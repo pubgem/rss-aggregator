@@ -11,7 +11,7 @@ from flask.ext.migrate import Migrate, MigrateCommand, upgrade
 import alembic
 import alembic.config
 from rss_aggregator import create_app, db
-from rss_aggregator.models import Role, PubgemUser as User
+from rss_aggregator.models import Role, User
 
 
 app = create_app()
