@@ -5,5 +5,6 @@ Description=RSSAggregator
 
 [Service]
 Type=simple
-EnvironmentFile=/etc/systemd/system/rss-aggregator.service.d/rss-aggregator.conf
+Environment="SETTINGS=/etc/systemd/system/rss-aggregator.service.d/rss-aggregator.conf"
+#EnvironmentFile=/etc/systemd/system/rss-aggregator.service.d/rss-aggregator.conf
 ExecStart=/home/rss-aggregator/rss-aggregator/bin/manage.py aggregate
