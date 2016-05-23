@@ -2,19 +2,27 @@
 from flask.ext.diamond.models.user import User
 from flask.ext.diamond import ma, db
 
+pubgemuser_rssfeed = db.Table('pubgemuser_rssfeed',
+    db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
+    db.Column('rss_feed_id', db.Integer(), db.ForeignKey('rss_feed.id')))
+
 
 class PubgemUser(User):
     """
     """
 
-    subscription = db.relationship('RSSFeed', backref=db.backref('pubgem_user', lazy='dynamic'))
+    subscriptions = db.relationship(
+        'RSSFeed',
+        secondary=pubgemuser_rssfeed,
+        backref=db.backref('pubgem_user', lazy='dynamic'),
+        # enable_typechecks=False)
+    )
     "A subscription is a relationship with models.RSSEntry"
 
-    subscription_id = db.Column(db.Integer, db.ForeignKey("rss_feed.id"))
-
-    def subscribe(self, rss_feed):
+    def subscribe(self, *rss_feeds):
         """
-
+        Subscribes a PubgemUser to an RSSFeed.
         """
-        # self.subscription
-        pass
+        valid_feeds = [i for i in rss_feeds if i not in self.subscriptions]  # Removes any duplicate subscriptions
+        self.subscriptions.extend(valid_feeds)
+        # import ipdb; ipdb.set_trace()
