@@ -9,9 +9,10 @@ frontpage = flask.Blueprint(
 )
 
 
-@frontpage.route('/')
+@frontpage.route('/frontpage')
 def index():
-    return flask.render_template('index.html', admin_view=None, rss_entry=None)
+    return flask.render_template('frontpage/index.html', rss_entries=models.RSSEntry.query.all())
+    # return flask.render_template('index.html', admin_view=None, rss_entry=None)
     # return flask.redirect(flask.url_for(".hello"))
 
 

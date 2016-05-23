@@ -1,11 +1,7 @@
-{% extends "admin/base.html" %}
+{% extends "base.html" %}
 
 {% block title %}
 PubGem
-{% endblock %}
-
-{% block body %}
-{% block breadcrumbs %}
 {% endblock %}
 
 {% block main_menu %}
@@ -13,8 +9,10 @@ PubGem
 
 {% block content %}
 
+blorg
+
     {% for item in rss_entries %}
-        <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
+        <li>{{ item.title }}</li>
     {% endfor %}
 
 {% endblock %}
