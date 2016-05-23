@@ -3,7 +3,7 @@
 
 from flask.ext.diamond import Diamond, db
 from flask.ext.diamond.facets.administration import AdminModelView
-from .models import User, Role
+from .models import Role, PubgemUser
 
 # declare global app instance
 application = None
@@ -12,12 +12,12 @@ application = None
 class rss_aggregator(Diamond):
     def init_accounts(self):
         "initialize accounts with the User and Role classes imported from .models"
-        result = self.super("accounts", user=User, role=Role)
+        result = self.super("accounts", user=PubgemUser, role=Role)
         return result
 
     def init_administration(self):
         "Initialize admin interface"
-        admin = self.super("administration", user=User, role=Role)
+        admin = self.super("administration", user=PubgemUser, role=Role)
 
         model_list = [
             models.RSSFeed,
