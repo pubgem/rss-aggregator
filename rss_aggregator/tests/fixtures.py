@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # rss-aggregator (c) pubgem
 
-from ..models import Role, User
+from ..models import Role, PubgemUser as User
 from .. import models
 import os
 
