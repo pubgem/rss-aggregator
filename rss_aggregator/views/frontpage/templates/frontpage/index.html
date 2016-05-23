@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+PubGem
+{% endblock %}
+
+{% block main_menu %}
+{% endblock %}
+
+{% block content %}
+
+blorg
+
+    {% for item in rss_entries %}
+        <li>{{ item.title }}</li>
+    {% endfor %}
+
+{% endblock %}
+
+{% block pagination %}
+{% endblock %}
+
+{% block tail %}
+<i class="fa fa-question-circle-o" aria-hidden="true"></i>Help
+About
+Terms
+{% endblock %}
