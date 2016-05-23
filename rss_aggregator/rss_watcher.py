@@ -7,11 +7,11 @@ class RSSWatcher:
     RSSWatcher checks for new entries in a journal's RSS feed and commits them to the database.
     """
 
-    # def __init__(self):
-    #     """
-    #     Watcher class network and authentication configuration.
-    #     """
-    #     pass
+    def __init__(self):
+        """
+        Watcher class network and authentication configuration.
+        """
+        pass
 
     def watch(self):
         """
@@ -21,3 +21,15 @@ class RSSWatcher:
 
         for rss_feed in all_rss_feeds:
             rss_feed.aggregate()
+
+    def load_list(self, path):
+        """
+        """
+
+        from json import JSONDecoder
+        from rss_aggregator import models
+        d = JSONDecoder()
+
+        with open(path, 'r') as f:
+            for i in d.decode(f.read()):
+                models.RSSFeed.load(i)
