@@ -86,19 +86,24 @@ def populate_db():
 
     from rss_aggregator.tests import fixtures
     fixtures.offline_rss_feed()
+    rssfeed_load_list('./rss_aggregator/tests/data/sample_apa_journals.json')
 
 
 @manager.command
-def rssfeed_add(path):
+def rssfeed_load_list(path):
     """
-    Adds RSS Feeds from a JSON file.
+    Adds RSS Feeds from a JSON file. Expecting a list.
 
     :param path: path to JSON file.
     :type path: str
     """
+    from json import JSONDecoder
     from rss_aggregator import models
+    d = JSONDecoder()
+
     with open(path, 'r') as f:
-        models.RSSFeed.loadf(f)
+        for i in d.decode(f.read()):
+            models.RSSFeed.load(i)
 
 
 @manager.command

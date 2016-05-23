@@ -28,15 +28,15 @@ class RSSFeed(db.Model, CRUDMixin, MarshmallowMixin):
 
     id = db.Column(db.Integer(), primary_key=True)
 
-    name = db.Column(db.String(50))
-    rss_url = db.Column(db.String(150))
-    doi = db.Column(db.String(50))
-    parser_class = db.Column(db.String(15))
+    name = db.Column(db.Text)
+    rss_url = db.Column(db.Text)
+    doi = db.Column(db.Text)
+    parser_class = db.Column(db.Text)
 
-    www = db.Column(db.String(50))
-    issn = db.Column(db.String(25))
-    isbn = db.Column(db.String(25))
-    publisher = db.Column(db.String(50))
+    www = db.Column(db.Text)
+    issn = db.Column(db.Text)
+    isbn = db.Column(db.Text)
+    publisher = db.Column(db.Text)
     summary = db.Column(db.Text)
 
     def aggregate(self):

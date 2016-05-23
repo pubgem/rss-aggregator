@@ -28,7 +28,7 @@ class RSSEntry(db.Model, CRUDMixin, MarshmallowMixin):
 
     raw_xml = db.Column(db.Text)
     date = db.Column(db.DateTime)
-    doi = db.Column(db.String(30))
+    doi = db.Column(db.Text)
 
     authors = db.Column(db.Text)  # TODO: Data structure beyond just a string?
     title = db.Column(db.Text)
