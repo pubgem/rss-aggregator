@@ -4,16 +4,81 @@
 PubGem
 {% endblock %}
 
+{% block htmlhead %}
+<style type="text/css">
+	.pagination-page-info {
+	    padding: .6em;
+	    padding-left: 0;
+	    width: 40em;
+	    margin: .5em;
+	    margin-left: 0;
+	    font-size: 12px;
+	}
+	.pagination-page-info b {
+	    color: black;
+	    background: #6aa6ed;
+	    padding-left: 2px;
+	    padding: .1em .25em;
+	    font-size: 150%;
+	}
+
+	.title {
+		display: block;
+		font-size: 1.2em;
+	}
+
+	.journal {
+		display: block;
+		font-size: 0.9em;
+	}
+
+	.authors {
+		display: block;
+		font-size: 0.8em;
+	}
+
+	.listing {
+		margin-bottom: 1em;
+	}
+
+	#pubgem {
+		color: blue;
+	}
+
+	#active {
+		color: black;
+	}
+
+	#breadcrumbs {
+		font-size: 1.2em;
+		margin-bottom: 1em;
+	}
+</style>
+<link rel="stylesheet" href="{{ url_for('frontpage.static', filename='css/font-awesome.min.css') }}">
+<link href="{{ url_for('admin.static', filename='bootstrap/bootstrap2/css/bootstrap.css') }}" rel="stylesheet">
+<link href="{{ url_for('admin.static', filename='bootstrap/bootstrap2/css/bootstrap-responsive.css') }}" rel="stylesheet">
+<link href="{{ url_for('admin.static', filename='admin/css/bootstrap2/admin.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block main_menu %}
 {% endblock %}
 
 {% block content %}
 
-blorg
+<div id="breadcrumbs">
+	<span id="pubgem"><a href="/"><i class="fa fa-graduation-cap" aria-hidden="true"></i> pubgem</a></span>
+	<span><i class="fa fa-newspaper-o" aria-hidden="true"></i> front page</span>
+</div>
 
     {% for item in rss_entries %}
-        <li>{{ item.title }}</li>
+    <div class="listing">
+    	<span class="title"><i class="fa fa-file-text-o" aria-hidden="true"></i> <a href="http://dx.doi.org/{{ item.doi }}">{{ item.title }}</a></span>
+    	<span class="journal"><i class="fa fa-book" aria-hidden="true"></i> {{ item.rss_feed.name }} (<a href="{{ item.www }}">www</a>)</span>
+    	<span class="authors">{{ item.authors }}</span>
+    </div>
     {% endfor %}
+
+{{ pagination.links }}
 
 {% endblock %}
 

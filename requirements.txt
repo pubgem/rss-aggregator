@@ -3,3 +3,4 @@ psycopg2==2.6.1
 feedparser==5.2.1
 ipdb==0.9.3
 setuptools>=18.5
+flask-paginate==0.4.1

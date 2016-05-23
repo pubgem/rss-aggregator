@@ -52,18 +52,25 @@ class RSSEntry(db.Model, CRUDMixin, MarshmallowMixin):
         """
         # import ipdb; ipdb.set_trace()
 
-        return cls.create(
-            rss_feed=rss_feed,
+        result = False
 
-            # raw_xml=entry[''],  # TODO: Get raw XML from feedparser!
-            doi=entry.dc_identifier,
-            date=parse_rss_timestamp(entry.updated_parsed),
+        if rss_feed.parser_class in ["apa", "sage", "tandf", "wiley", "liebert"]:
+            result = cls.create(
+                rss_feed=rss_feed,
 
-            title=entry.title,
-            authors=entry.author,
-            www=entry.link,
-            summary=entry.summary,
-        )
+                # raw_xml=entry[''],  # TODO: Get raw XML from feedparser!
+                doi=entry.dc_identifier,
+                date=parse_rss_timestamp(entry.updated_parsed),
+
+                title=entry.title,
+                authors=entry.author,
+                www=entry.link,
+                summary=entry.summary,
+            )
+        else:
+            print("WARN: skip unsupported parser_class {0}".format(rss_feed.parser_class))
+
+        return result
 
 
 # class RSSEntrySchema(ma.ModelSchema):
