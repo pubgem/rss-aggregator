@@ -43,6 +43,10 @@ class RSSFeed(db.Model, CRUDMixin, MarshmallowMixin):
         """
         Queries the RSS Feed, checks for a new entry, and checks-in new entry.
         """
+        if self.parser_class in ["sciencedirect", "tandf", "springer", "rss"]:
+            print("WARN: skip unsupported parser_class {0}".format(self.parser_class))
+            return
+
         d = feedparser.parse(self.rss_url)
         # self.parse_timestamp(d.feed['updated_parsed'])  # used in later optimization
         # Feedparser.Bozo flag

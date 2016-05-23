@@ -97,13 +97,9 @@ def rssfeed_load_list(path):
     :param path: path to JSON file.
     :type path: str
     """
-    from json import JSONDecoder
-    from rss_aggregator import models
-    d = JSONDecoder()
-
-    with open(path, 'r') as f:
-        for i in d.decode(f.read()):
-            models.RSSFeed.load(i)
+    from rss_aggregator.rss_watcher import RSSWatcher
+    w = RSSWatcher()
+    w.load_list(path)
 
 
 @manager.command
