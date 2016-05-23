@@ -1,8 +1,7 @@
 # rss-aggregator (c) pubgem
-from .. import db
 from flask.ext.diamond.mixins.crud import CRUDMixin
 from flask.ext.diamond.mixins.marshmallow import MarshmallowMixin
-from flask.ext.diamond import ma
+from flask.ext.diamond import ma, db
 from ..utils import parse_rss_timestamp
 
 
@@ -65,3 +64,8 @@ class RSSEntry(db.Model, CRUDMixin, MarshmallowMixin):
             www=entry.link,
             summary=entry.summary,
         )
+
+
+# class RSSEntrySchema(ma.ModelSchema):
+#     class Meta:
+#         model = RSSEntry

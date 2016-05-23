@@ -1,10 +1,9 @@
 # rss-aggregator (c) pubgem
-from .. import db
 from . import RSSEntry
 from ..utils import parse_rss_timestamp
 from flask.ext.diamond.mixins.crud import CRUDMixin
 from flask.ext.diamond.mixins.marshmallow import MarshmallowMixin
-from flask.ext.diamond import ma
+from flask.ext.diamond import ma, db
 import feedparser
 
 
