@@ -1,3 +1,4 @@
+from rss_aggregator import models
 import flask
 
 frontpage = flask.Blueprint(
@@ -10,7 +11,7 @@ frontpage = flask.Blueprint(
 
 @frontpage.route('/')
 def index():
-    return flask.render_template('index.html', admin_view=None)
+    return flask.render_template('index.html', admin_view=None, rss_entry=None)
     # return flask.redirect(flask.url_for(".hello"))
 
 

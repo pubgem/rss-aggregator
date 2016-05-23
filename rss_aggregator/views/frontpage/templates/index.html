@@ -13,10 +13,10 @@ PubGem
 
 {% block content %}
 
-    <h1>My Webpage</h1>
-    {{ a_variable }}
+    {% for item in rss_entries %}
+        <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
+    {% endfor %}
 
-    {# a comment #}
 {% endblock %}
 
 {% block pagination %}
