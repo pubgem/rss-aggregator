@@ -8,3 +8,6 @@ Type=simple
 Environment="SETTINGS=/etc/systemd/system/rss-aggregator.service.d/rss-aggregator.conf"
 #EnvironmentFile=/etc/systemd/system/rss-aggregator.service.d/rss-aggregator.conf
 ExecStart=/home/rss-aggregator/rss-aggregator/bin/manage.py aggregate
+
+[Install]
+WantedBy=multi-user.target
