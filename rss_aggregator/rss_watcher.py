@@ -1,4 +1,5 @@
 # rss-aggregator (c) pubgem
+
 from . import models
 
 
