@@ -54,7 +54,7 @@ class RSSEntry(db.Model, CRUDMixin, MarshmallowMixin):
 
         result = False
 
-        if rss_feed.parser_class in ["apa", "sage", "wiley"]:
+        if rss_feed.parser_class in ["apa", "sage", "tandf", "wiley", "liebert"]:
             result = cls.create(
                 rss_feed=rss_feed,
 
@@ -67,7 +67,7 @@ class RSSEntry(db.Model, CRUDMixin, MarshmallowMixin):
                 www=entry.link,
                 summary=entry.summary,
             )
-        elif rss_feed.parser_class in ["sciencedirect", "tandf", "springer", "rss"]:
+        else:
             print("WARN: skip unsupported parser_class {0}".format(rss_feed.parser_class))
 
         return result

@@ -71,7 +71,7 @@
     },
     {
         "name": "Human-Computer Interaction",
-        "parser_class": "rss",
+        "parser_class": "tandf",
         "rss_url": "http://www.tandfonline.com/action/showFeed?ui=0&mi=78dak6&ai=2h5&jc=hhci20&type=etoc&feed=rss"
     },
     {
@@ -111,7 +111,7 @@
     },
     {
         "name": "Journal of Information Technology & Politics",
-        "parser_class": "rss",
+        "parser_class": "tandf",
         "rss_url": "http://www.tandfonline.com/action/showFeed?ui=0&mi=78dcn5&ai=1cl&jc=witp20&type=etoc&feed=rss"
     },
     {
@@ -121,12 +121,12 @@
     },
     {
         "name": "Psychology & Marketing",
-        "parser_class": "rss",
+        "parser_class": "wiley",
         "rss_url": "http://onlinelibrary.wiley.com/rss/journal/10.1002/(ISSN)1520-6793"
     },
     {
         "name": "Journal of Interactive Advertising",
-        "parser_class": "rss",
+        "parser_class": "tandf",
         "rss_url": "http://www.tandfonline.com/action/showFeed?ui=0&mi=78dcn5&ai=15h5v&jc=ujia20&type=etoc&feed=rss"
     },
     {

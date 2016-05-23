@@ -21,7 +21,7 @@ class AllFeedsTestCase(DiamondTestCase):
         self.rss_watcher = RSSWatcher()
 
     def tearDown(self):
-        pass # keep the database
+        pass  # keep the database
 
     def test_load_all(self):
         """
