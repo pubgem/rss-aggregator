@@ -27,6 +27,7 @@ class PubgemUser(User):
         """
         valid_feeds = [i for i in rss_feeds if i not in self.subscriptions]  # Removes any duplicate subscriptions
         self.subscriptions.extend(valid_feeds)
+        self.save()
         # import ipdb; ipdb.set_trace()
 
     def unsubscribe(self, *rss_feeds):
@@ -36,3 +37,4 @@ class PubgemUser(User):
         :param *rss_feeds: a list of models.RSSFeed objects
         """
         [self.subscriptions.remove(feed) for feed in rss_feeds if feed in self.subscriptions]
+        self.save()
