@@ -82,10 +82,8 @@ frontpage
 	</div>
 </div>
 
-Your subscriptions here...
-
 {% for journal in current_user.subscriptions %}
-	<li>{{ journal.name }} <a href="/user/unsubscribe/{{ journal.id }}">unsubscribe</a></li>
+	<li>{{ journal.name }} <a href="/user/unsubscribe/{{ journal.id }}"> <i class="fa fa-minus-square-o" aria-hidden="true"></i> unsubscribe</a></li>
 {% endfor %}
 
 {% endblock %}
