@@ -35,4 +35,5 @@ class PubgemUser(User):
         """
         valid_feeds = [i for i in rss_feeds if i not in self.subscriptions]  # Removes any duplicate subscriptions
         self.subscriptions.extend(valid_feeds)
+        self.save()
         # import ipdb; ipdb.set_trace()

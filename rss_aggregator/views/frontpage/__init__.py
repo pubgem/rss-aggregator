@@ -40,6 +40,8 @@ def index():
     # return flask.redirect(flask.url_for(".hello"))
 
 
-# @frontpage.route('/hello')
-# def hello():
-#     return flask.render_template('hello.html')
+@frontpage.route('/subscriptions')
+def subscriptions():
+    return flask.render_template(
+        'frontpage/subscriptions.html',
+    )
