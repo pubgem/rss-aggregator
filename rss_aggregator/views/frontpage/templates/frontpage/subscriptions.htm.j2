@@ -27,8 +27,15 @@ subscriptions
 	</div>
 </div>
 
+<div id="subscription_list">
 {% for journal in current_user.subscriptions %}
-	<li>{{ journal.name }} <a href="/user/unsubscribe/{{ journal.id }}"> <i class="fa fa-minus-square-o" aria-hidden="true"></i> unsubscribe</a></li>
+	<li>
+		<a class="btn btn-mini" href="/user/unsubscribe/{{ journal.id }}">
+			<i class="fa fa-minus-square-o" aria-hidden="true"></i> unsubscribe
+		</a>
+		<a href="/journal/{{ journal.id }}">{{ journal.name }}</a>
+		</li>
 {% endfor %}
+</div>
 
 {% endblock %}

@@ -100,3 +100,12 @@ label.control-label {
 .here a, .here a:hover {
 	color: black;
 }
+
+#subscription_list li {
+	list-style-type: none;
+	line-height: 2em !important;
+}
+
+#subscription_list a {
+	color: black;
+}

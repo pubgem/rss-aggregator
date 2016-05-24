@@ -48,7 +48,9 @@ journal
     {% endfor %}
 
 <div align="center">
-{{ pagination.links }}
+	{% if pagination.page < pagination.total_pages %}
+		<a class="btn btn-small" href="?page={{ pagination.page+1 }}">more</a>
+	{% endif %}
 </div>
 
 {% endblock %}
