@@ -45,7 +45,7 @@ class AllFeedsTestCase(DiamondTestCase):
         print(models.RSSEntry.query.count())
         assert(False)
 
-    @attr('single', 'online')
+    # @attr('single', 'online')
     def test_individual_feeds(self):
         self.rss_watcher.load_list("tests/data/sample_apa_journals.json")
 
