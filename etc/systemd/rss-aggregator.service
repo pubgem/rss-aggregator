@@ -9,7 +9,7 @@ Type=simple
 User=rss-aggregator
 Group=rss-aggregator
 Environment="SETTINGS=/etc/systemd/system/rss-aggregator.conf"
-ExecStart=/home/rss-aggregator/rss-aggregator/bin/manage.py aggregate
+ExecStart=/home/rss-aggregator/.virtualenvs/rss-aggregator/bin/manage.py aggregate
 
 [Install]
 WantedBy=multi-user.target
