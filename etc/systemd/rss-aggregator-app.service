@@ -1,0 +1,14 @@
+# Install to /etc/systemd/system
+# https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/sect-Managing_Services_with_systemd-Unit_Files.html
+
+[Unit]
+Description=PubGem RSSAggregator Application process
+
+[Service]
+Type=simple
+Environment="SETTINGS=/etc/systemd/system/rss-aggregator.conf"
+#EnvironmentFile=/etc/systemd/system/rss-aggregator.service.d/rss-aggregator.conf
+ExecStart=/home/rss-aggregator/rss-aggregator/bin/manage.py aggregate
+
+[Install]
+WantedBy=multi-user.target

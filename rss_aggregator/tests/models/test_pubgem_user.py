@@ -32,7 +32,7 @@ class RSSEntryTestCase(DiamondTestCase):
         user.subscribe(new_rss_feed)
         self.assertEquals(len(user.subscriptions), 2, "Second subscription added")
 
-    @attr('single')
+    # @attr('single')
     def test_unsubscribe(self):
         "Testing models.User.unsubscribe"
         user = models.User.find(name="guest", email="guest@example.com")
