@@ -1,0 +1,9 @@
+{% if current_user.is_authenticated and current_user.name %}
+	<span>
+		<a href="/subscriptions"><i class="fa fa-folder-open-o" aria-hidden="true"></i> subscriptions</a>
+	</span>
+{% else %}
+	<span>
+		<a class="btn btn-mini" href="/user/login"><i class="fa fa-sign-in" aria-hidden="true"></i> signup &amp; login</a>
+	</span>
+{% endif %}

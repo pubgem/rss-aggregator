@@ -35,25 +35,56 @@ label.control-label {
 
 .title {
 	display: block;
-	font-size: 1.2em;
+	font-size: 1.1em;
+}
+
+.title a, .title a:hover {
+	color: black;
+	text-decoration: none;
+}
+
+/* .title a:hover {
+	color: black;
+} */
+
+.title a:visited {
+	color: gray;
+	text-decoration: none;
+}
+
+.links a, .links a:hover, .links a:visited {
+	color: rgb(200, 200, 200);
+	font-size: 0.7em;
 }
 
 .journal {
 	display: block;
+	color: gray;
 	font-size: 0.9em;
 }
 
+.journal a, .journal a:visited {
+	color: gray;
+	text-decoration: none;
+}
+
+.journal a:hover {
+	color: gray;
+}
+
 .authors {
+	color: gray;
 	display: block;
 	font-size: 0.8em;
+	line-height: 1.2em;
 }
 
 .listing {
 	margin-bottom: 1em;
 }
 
-#pubgem {
-	color: blue;
+#pubgem a {
+	color: black;
 }
 
 #active {
@@ -64,4 +95,8 @@ label.control-label {
 	font-size: 1.2em;
 	margin-bottom: 1em;
 	margin-top: 0.5em;
+}
+
+.here a, .here a:hover {
+	color: black;
 }

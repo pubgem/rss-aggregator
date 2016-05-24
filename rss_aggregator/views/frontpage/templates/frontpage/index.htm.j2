@@ -1,0 +1,51 @@
+{% extends "frontpage/base.htm.j2" %}
+
+{% block title %}
+frontpage
+{% endblock %}
+
+{% block content %}
+
+<div id="navbar">
+	<div id="account" style="float: right">
+		{# <span><a href=""><i class="fa fa-search" aria-hidden="true"></i> search</a></span> #}
+		{% include "frontpage/_login.htm.j2" %}
+	</div>
+
+	<div id="breadcrumbs">
+		<span id="pubgem">
+			<a href="/"><i class="fa fa-graduation-cap" aria-hidden="true"></i> pubgem</a>
+		</span>
+		<span class="here">
+			<a href="/"><i class="fa fa-newspaper-o" aria-hidden="true"></i> front page</a>
+		</span>
+	</div>
+</div>
+
+    {% for item in rss_entries %}
+    <div class="listing">
+    	<span class="title">
+    		<a href="http://dx.doi.org/{{ item.doi }}"><i class="fa fa-file-text-o" aria-hidden="true"></i> {{ item.title }}</a>
+    		<span class="links">
+	    		<a href="{{ item.www }}">www</a>
+	    		<a href="http://dx.doi.org/{{ item.doi }}">doi</a>
+	    	</span>
+    	</span>
+    	<span class="journal">
+    		<a href="/journal/{{ item.rss_feed.id }}"><i class="fa fa-book" aria-hidden="true"></i> {{ item.rss_feed.name }}</a>
+    	</span>
+    	<span class="authors">{{ item.authors }}</span>
+    </div>
+    {% endfor %}
+
+<div align="center">
+<a class="btn btn-small" href="?page={{ pagination.page+1 }}">more</a>
+</div>
+
+{% endblock %}
+
+{% block tail %}
+<i class="fa fa-question-circle-o" aria-hidden="true"></i>Help
+About
+Terms
+{% endblock %}

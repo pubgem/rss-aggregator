@@ -27,11 +27,13 @@ def index_all():
         page=page,
         per_page=10,
         total=total,
+        # inner_window=0,
+        # outer_window=0,
         record_name='rss_entries'
     )
 
     return flask.render_template(
-        'frontpage/index.html',
+        'frontpage/index.htm.j2',
         rss_entries=rss_entries.slice(page*per_page, (page*per_page)+per_page),
         pagination=pagination,
     )
@@ -67,7 +69,7 @@ def index_filtered():
     )
 
     return flask.render_template(
-        'frontpage/index.html',
+        'frontpage/index.htm.j2',
         rss_entries=rss_entries.slice(page*per_page, (page*per_page)+per_page),
         pagination=pagination,
     )
@@ -87,7 +89,7 @@ def index():
 @frontpage.route('/subscriptions')
 def subscriptions():
     return flask.render_template(
-        'frontpage/subscriptions.html',
+        'frontpage/subscriptions.htm.j2',
     )
 
 
@@ -126,7 +128,7 @@ def journal(id):
     )
 
     return flask.render_template(
-        'frontpage/journal.html',
+        'frontpage/journal.htm.j2',
         rss_feed=rss_feed,
         rss_entries=rss_entries.slice((page-1)*per_page, ((page-1)*per_page)+per_page),
         pagination=pagination,
