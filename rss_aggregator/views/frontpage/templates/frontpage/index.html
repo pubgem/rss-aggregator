@@ -85,7 +85,7 @@ frontpage
     {% for item in rss_entries %}
     <div class="listing">
     	<span class="title"><i class="fa fa-file-text-o" aria-hidden="true"></i> <a href="http://dx.doi.org/{{ item.doi }}">{{ item.title }}</a></span>
-    	<span class="journal"><i class="fa fa-book" aria-hidden="true"></i> {{ item.rss_feed.name }} (<a href="{{ item.www }}">www</a>)</span>
+    	<span class="journal"><a href="/journal/{{ item.rss_feed.id }}"><i class="fa fa-book" aria-hidden="true"></i> {{ item.rss_feed.name }}</a> (<a href="{{ item.www }}">www</a>)</span>
     	<span class="authors">{{ item.authors }}</span>
     </div>
     {% endfor %}

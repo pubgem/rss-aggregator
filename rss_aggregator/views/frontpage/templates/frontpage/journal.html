@@ -78,16 +78,22 @@ frontpage
 
 	<div id="breadcrumbs">
 		<span id="pubgem"><a href="/"><i class="fa fa-graduation-cap" aria-hidden="true"></i> pubgem</a></span>
-		<span><i class="fa fa-newspaper-o" aria-hidden="true"></i> front page</span>
+		<span><a href="/journal/{{ rss_feed.id }}"><i class="fa fa-book" aria-hidden="true"></i> {{ rss_feed.name }} </a></span>
+		<span><a href="/user/subscribe/{{ rss_feed.id }}"><i class="fa fa-plus-square-o" aria-hidden="true"></i> subscribe</a></span>
 	</div>
 </div>
 
-Your subscriptions here...
+    {% for item in rss_entries %}
+    <div class="listing">
+    	<span class="title"><i class="fa fa-file-text-o" aria-hidden="true"></i> <a href="http://dx.doi.org/{{ item.doi }}">{{ item.title }}</a></span>
+    	<span class="journal"><i class="fa fa-book" aria-hidden="true"></i> {{ item.rss_feed.name }} (<a href="{{ item.www }}">www</a>)</span>
+    	<span class="authors">{{ item.authors }}</span>
+    </div>
+    {% endfor %}
 
-{% for journal in current_user.subscriptions %}
-	<li>{{ journal.name }}</li>
-{% endfor %}
-
+<div align="center">
+{{ pagination.links }}
+</div>
 
 {% endblock %}
 

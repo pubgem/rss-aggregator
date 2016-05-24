@@ -78,16 +78,15 @@ frontpage
 
 	<div id="breadcrumbs">
 		<span id="pubgem"><a href="/"><i class="fa fa-graduation-cap" aria-hidden="true"></i> pubgem</a></span>
-		<span><i class="fa fa-newspaper-o" aria-hidden="true"></i> front page</span>
+		<span><i class="fa fa-folder-open-o" aria-hidden="true"></i> subscriptions</span>
 	</div>
 </div>
 
 Your subscriptions here...
 
 {% for journal in current_user.subscriptions %}
-	<li>{{ journal.name }}</li>
+	<li>{{ journal.name }} <a href="/user/unsubscribe/{{ journal.id }}">unsubscribe</a></li>
 {% endfor %}
-
 
 {% endblock %}
 
