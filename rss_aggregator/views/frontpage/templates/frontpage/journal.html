@@ -52,6 +52,7 @@ frontpage
 	#navbar {
 		font-size: 1.2em;
 		margin-bottom: 1em;
+		margin-top: 0.5em;
 	}
 </style>
 <link rel="stylesheet" href="{{ url_for('frontpage.static', filename='css/font-awesome.min.css') }}">
@@ -70,7 +71,7 @@ frontpage
 		{# <span><a href=""><i class="fa fa-search" aria-hidden="true"></i> search</a></span> #}
 
 		{% if current_user.is_authenticated and current_user.name %}
-			<span><a href="/subscriptions"><i class="fa fa-gear" aria-hidden="true"></i> {{ current_user.name }}</a></span>
+			<span><a href="/subscriptions"><i class="fa fa-folder-open-o" aria-hidden="true"></i> subscriptions</a></span>
 		{% else %}
 			<span><a href="/user/login"><i class="fa fa-user" aria-hidden="true"></i> signup &amp; login</a></span>
 		{% endif %}

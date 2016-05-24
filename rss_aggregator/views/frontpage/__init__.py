@@ -13,8 +13,7 @@ frontpage = flask.Blueprint(
 )
 
 
-@frontpage.route('/')
-def index():
+def index_all():
     try:
         page = int(flask.request.args.get('page', 1))
     except ValueError:
@@ -37,8 +36,52 @@ def index():
         pagination=pagination,
     )
 
-    # return flask.render_template('index.html', admin_view=None, rss_entry=None)
-    # return flask.redirect(flask.url_for(".hello"))
+
+def index_filtered():
+    try:
+        page = int(flask.request.args.get('page', 1))
+    except ValueError:
+        page = 1
+
+    per_page = 10
+
+    # subscriptions = current_user.subscriptions
+
+    # subq = session.query(RSSEntry)
+    # subq = subq.filter(Equipment.equipment_type == "L").subquery()
+
+    # q = RSSEntry.query.filter(
+    #     RSSEntry.rss_feed.in_(
+    #         User.get_by_id(1).subscriptions
+    #     )
+    # )
+
+    rss_entries = models.RSSEntry.query
+    total = rss_entries.count()
+
+    pagination = Pagination(
+        page=page,
+        per_page=10,
+        total=total,
+        record_name='rss_entries'
+    )
+
+    return flask.render_template(
+        'frontpage/index.html',
+        rss_entries=rss_entries.slice(page*per_page, (page*per_page)+per_page),
+        pagination=pagination,
+    )
+
+    # result = db.engine.execute("<sql here>")
+
+
+@frontpage.route('/')
+def index():
+    if current_user:
+        #return "logged in"
+        return index_all()
+    else:
+        return index_all()
 
 
 @frontpage.route('/subscriptions')
