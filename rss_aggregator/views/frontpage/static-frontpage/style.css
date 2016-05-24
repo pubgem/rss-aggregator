@@ -4,11 +4,6 @@
     font-size: 0.7em;
 }
 
-#content {
-    max-width: 90%;
-    margin: 0px auto;
-}
-
 label.control-label {
     margin-right: 1em ;
 }
@@ -109,3 +104,46 @@ label.control-label {
 #subscription_list a {
 	color: black;
 }
+
+/**************
+Media tweaks
+*/
+
+@media (min-width: 1001px) {
+	body {
+		padding: 0em 2em !important;
+	}
+
+	#content {
+	    max-width: 1000px;
+	    margin: 0px auto;
+	}
+}
+
+@media (min-width: 481px) and (max-width: 1000px) {
+	body {
+		padding: 0em 0.5em !important;
+	}
+
+	#content {
+	    max-width: 800px;
+	    margin: 0px auto;
+	}
+}
+
+@media (max-width: 480px) {
+	body {
+		padding: 0.5em !important;
+	}
+
+	#content {
+	    max-width: 100%;
+	    margin: 0px auto;
+	}
+
+	#navbar {
+		margin-top: 0;
+		margin-bottom: 0.5em ;
+	}
+}
+
