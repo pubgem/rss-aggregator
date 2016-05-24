@@ -1,0 +1,67 @@
+#footer {
+    text-align: center;
+    font-family: arial, helvetica, sans;
+    font-size: 0.7em;
+}
+
+#content {
+    max-width: 90%;
+    margin: 0px auto;
+}
+
+label.control-label {
+    margin-right: 1em ;
+}
+
+.checkbox input[type="checkbox"] {
+    margin-left: 0px;
+}
+
+.pagination-page-info {
+    padding: .6em;
+    padding-left: 0;
+    width: 40em;
+    margin: .5em;
+    margin-left: 0;
+    font-size: 12px;
+}
+.pagination-page-info b {
+    color: black;
+    background: #6aa6ed;
+    padding-left: 2px;
+    padding: .1em .25em;
+    font-size: 150%;
+}
+
+.title {
+	display: block;
+	font-size: 1.2em;
+}
+
+.journal {
+	display: block;
+	font-size: 0.9em;
+}
+
+.authors {
+	display: block;
+	font-size: 0.8em;
+}
+
+.listing {
+	margin-bottom: 1em;
+}
+
+#pubgem {
+	color: blue;
+}
+
+#active {
+	color: black;
+}
+
+#navbar {
+	font-size: 1.2em;
+	margin-bottom: 1em;
+	margin-top: 0.5em;
+}

@@ -1,67 +1,7 @@
 {% extends "frontpage/base.html" %}
 
 {% block title %}
-frontpage
-{% endblock %}
-
-{% block htmlhead %}
-<style type="text/css">
-	.pagination-page-info {
-	    padding: .6em;
-	    padding-left: 0;
-	    width: 40em;
-	    margin: .5em;
-	    margin-left: 0;
-	    font-size: 12px;
-	}
-	.pagination-page-info b {
-	    color: black;
-	    background: #6aa6ed;
-	    padding-left: 2px;
-	    padding: .1em .25em;
-	    font-size: 150%;
-	}
-
-	.title {
-		display: block;
-		font-size: 1.2em;
-	}
-
-	.journal {
-		display: block;
-		font-size: 0.9em;
-	}
-
-	.authors {
-		display: block;
-		font-size: 0.8em;
-	}
-
-	.listing {
-		margin-bottom: 1em;
-	}
-
-	#pubgem {
-		color: blue;
-	}
-
-	#active {
-		color: black;
-	}
-
-	#navbar {
-		font-size: 1.2em;
-		margin-bottom: 1em;
-		margin-top: 0.5em;
-	}
-</style>
-<link rel="stylesheet" href="{{ url_for('frontpage.static', filename='css/font-awesome.min.css') }}">
-<link href="{{ url_for('admin.static', filename='bootstrap/bootstrap2/css/bootstrap.css') }}" rel="stylesheet">
-<link href="{{ url_for('admin.static', filename='bootstrap/bootstrap2/css/bootstrap-responsive.css') }}" rel="stylesheet">
-<link href="{{ url_for('admin.static', filename='admin/css/bootstrap2/admin.css') }}" rel="stylesheet">
-{% endblock %}
-
-{% block main_menu %}
+subscriptions
 {% endblock %}
 
 {% block content %}
@@ -87,13 +27,4 @@ frontpage
 	<li>{{ journal.name }} <a href="/user/unsubscribe/{{ journal.id }}"> <i class="fa fa-minus-square-o" aria-hidden="true"></i> unsubscribe</a></li>
 {% endfor %}
 
-{% endblock %}
-
-{% block pagination %}
-{% endblock %}
-
-{% block tail %}
-<i class="fa fa-question-circle-o" aria-hidden="true"></i>Help
-About
-Terms
 {% endblock %}
