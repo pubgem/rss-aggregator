@@ -1,7 +1,7 @@
 {% extends "frontpage/base.htm.j2" %}
 
 {% block title %}
-frontpage
+pubgem
 {% endblock %}
 
 {% block content %}
@@ -26,15 +26,15 @@ frontpage
     <div class="listing">
     	<span class="title">
     		<a href="http://dx.doi.org/{{ item.doi }}"><i class="fa fa-file-text-o" aria-hidden="true"></i> {{ item.title }}</a>
-    		<span class="links">
-	    		<a href="{{ item.www }}">www</a>
-	    		<a href="http://dx.doi.org/{{ item.doi }}">doi</a>
-	    	</span>
     	</span>
+    	<span class="authors"><i class="fa fa-user" aria-hidden="true"></i> {{ item.authors }}</span>
     	<span class="journal">
     		<a href="/journal/{{ item.rss_feed.id }}"><i class="fa fa-book" aria-hidden="true"></i> {{ item.rss_feed.name }}</a>
     	</span>
-    	<span class="authors">{{ item.authors }}</span>
+		{# <span class="links">
+    		<a href="{{ item.www }}">www</a>
+    		<a href="http://dx.doi.org/{{ item.doi }}">doi</a>
+    	</span> #}
     </div>
     {% endfor %}
 

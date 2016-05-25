@@ -12,6 +12,8 @@ frontpage = flask.Blueprint(
     static_folder='static-frontpage'
 )
 
+per_page = 20
+
 
 def index_all():
     try:
@@ -19,13 +21,12 @@ def index_all():
     except ValueError:
         page = 1
 
-    per_page = 10
     rss_entries = models.RSSEntry.query
     total = rss_entries.count()
 
     pagination = Pagination(
         page=page,
-        per_page=10,
+        per_page=per_page,
         total=total,
         # inner_window=0,
         # outer_window=0,
@@ -45,8 +46,6 @@ def index_filtered():
     except ValueError:
         page = 1
 
-    per_page = 10
-
     # subscriptions = current_user.subscriptions
 
     # subq = session.query(RSSEntry)
@@ -63,7 +62,7 @@ def index_filtered():
 
     pagination = Pagination(
         page=page,
-        per_page=10,
+        per_page=per_page,
         total=total,
         record_name='rss_entries'
     )
@@ -114,7 +113,6 @@ def journal(id):
     except ValueError:
         page = 1
 
-    per_page = 10
     rss_feed = models.RSSFeed.get_by_id(id)
     print(rss_feed.rss_entry.all())
     rss_entries = rss_feed.rss_entry
@@ -122,7 +120,7 @@ def journal(id):
 
     pagination = Pagination(
         page=page,
-        per_page=10,
+        per_page=per_page,
         total=total,
         record_name='rss_entries'
     )
