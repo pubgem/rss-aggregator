@@ -25,7 +25,8 @@ pubgem
     {% for item in rss_entries %}
     <div class="listing">
     	<span class="title">
-    		<a href="http://dx.doi.org/{{ item.doi }}"><i class="fa fa-file-text-o" aria-hidden="true"></i> {{ item.title }}</a>
+    		{# <a href="http://dx.doi.org/{{ item.doi }}"><i class="fa fa-file-text-o" aria-hidden="true"></i> {{ item.title }}</a> #}
+    		<a href="{{ item.www }}"><i class="fa fa-file-text-o" aria-hidden="true"></i> {{ item.title }}</a>
     	</span>
     	<span class="authors"><i class="fa fa-user" aria-hidden="true"></i> {{ item.authors }}</span>
     	<span class="journal">
