@@ -35,7 +35,7 @@ def index_all():
 
     return flask.render_template(
         'frontpage/index.htm.j2',
-        rss_entries=rss_entries.slice(page*per_page, (page*per_page)+per_page),
+        rss_entries=rss_entries.slice((page-1)*per_page, ((page-1)*per_page)+per_page),
         pagination=pagination,
     )
 
@@ -69,7 +69,7 @@ def index_filtered():
 
     return flask.render_template(
         'frontpage/index.htm.j2',
-        rss_entries=rss_entries.slice(page*per_page, (page*per_page)+per_page),
+        rss_entries=rss_entries.slice((page-1)*per_page, ((page-1)*per_page)+per_page),
         pagination=pagination,
     )
 
