@@ -21,7 +21,7 @@ def index_all():
     except ValueError:
         page = 1
 
-    rss_entries = models.RSSEntry.query
+    rss_entries = models.RSSEntry.query.order_by(models.RSSEntry.date.desc())
     total = rss_entries.count()
 
     pagination = Pagination(
@@ -57,7 +57,7 @@ def index_filtered():
     #     )
     # )
 
-    rss_entries = models.RSSEntry.query
+    rss_entries = models.RSSEntry.query.order_by(models.RSSEntry.date.desc())
     total = rss_entries.count()
 
     pagination = Pagination(
@@ -115,7 +115,8 @@ def journal(id):
 
     rss_feed = models.RSSFeed.get_by_id(id)
     print(rss_feed.rss_entry.all())
-    rss_entries = rss_feed.rss_entry
+    rss_entries = rss_feed.rss_entry.order_by(models.RSSEntry.date.desc())
+
     total = rss_entries.count()
 
     pagination = Pagination(
