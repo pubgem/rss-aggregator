@@ -44,14 +44,17 @@ class ParseBase:
     def parse(self):
         payload = [{
             "ENTRYTYPE": "article",
-            "ID": "",  # First Author Lastname, Year, MD5 hash of title (truncated)
+            "ID": str(),  # First Author Lastname, Year, MD5 hash of title (truncated)
             "doi": self.rss_entry.doi,
             "title": self.rss_entry.title,
             "author": self.rss_entry.authors,  # Determined per Parse_ class
             "journal": self.rss_entry.rss_feed.name,
+            "number": self.rss_entry.issue,
+            "volume": self.rss_entry.volume,
             "pages": self.rss_entry.pages,
-            "issue": self.rss_entry.issue,
             "year": self.rss_entry.date.year,
+            "month": datetime.datetime.strftime(self.rss_entry.date, "%b").lower(),
+            # "day": str(self.rss_entry.date.day),
         }]
         self.bib_db.entries = payload
 
