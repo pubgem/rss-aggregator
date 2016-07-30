@@ -4,6 +4,7 @@ from bibtexparser.bibdatabase import BibDatabase
 from bibtexparser.bwriter import BibTexWriter
 import datetime
 import inspect
+import hashlib
 import sys
 
 
@@ -42,9 +43,14 @@ class ParseBase:
         self.parse()
 
     def parse(self):
+        id = "{author}_{year}_{title}".format(
+            author=self.get_authors()[0]["last_name"],
+            year=self.rss_entry.date.year,
+            title=hashlib.md5(bytes(self.rss_entry.title)).hexdigest()[8:],
+        )
         payload = [{
             "ENTRYTYPE": "article",
-            "ID": str(),  # First Author Lastname, Year, MD5 hash of title (truncated)
+            "ID": id,  # First Author Lastname, Year, MD5 hash of title (truncated)
             "doi": self.rss_entry.doi,
             "title": self.rss_entry.title,
             "author": self.rss_entry.authors,  # Determined per Parse_ class
@@ -58,6 +64,12 @@ class ParseBase:
         }]
         self.bib_db.entries = payload
 
+    def get_authors(self):
+        """
+        Parses authors field from models.RSSEntry. Usually overridden per parser case
+        """
+        return self.rss_entry.authors
+
     def get_bibtex(self):
         writer = BibTexWriter()
         return writer.write(self.bib_db)
@@ -65,11 +77,19 @@ class ParseBase:
 
 class Parse_apa(ParseBase):
 
-    pass
-    # def parse(self):
-    #     super().parse()
-    #     payload = {"doi": "yo momma"}
-    #     self.bib_db.entries[0].update(payload)
+    def get_authors(self):
+        "Default apa style"
+        authors = self.rss_entry.authors.split(";")
+        parsed_authors = []
+        for i in authors:
+            p = i.split(", ")
+            author = {
+                "last_name": p[0],
+                "first_name": p[1].split(". ")[0],
+                "middle_names": "".join(p[1].split(". ")[1:]),
+            }
+            parsed_authors.append(author)
+        return parsed_authors
 
 
 class Parse_sage(ParseBase):

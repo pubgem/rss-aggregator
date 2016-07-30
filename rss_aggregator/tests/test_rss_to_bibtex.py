@@ -42,4 +42,4 @@ class RSSToBibtexTestCase(DiamondTestCase):
         rss_entry = models.RSSEntry.find(doi='10.1037/pspa0000047')
         rss_to_bibtex = RSSToBibtex(rss_entry)
         bibtex = rss_to_bibtex.get_bibtex()
-        print(bibtex); assert False;
+        # print(bibtex); assert False;
