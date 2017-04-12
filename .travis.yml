@@ -8,4 +8,10 @@ install: make install
 script: make test
 # notify slack
 notifications:
-  slack: pubgem:PnolDHCaK86h14XrKpgE49cH
+  #slack: pubgem:PnolDHCaK86h14XrKpgE49cH
+  webhooks:
+    urls:
+      - "https://scalar.vector.im/api/neb/services/hooks/dHJhdmlzLWNpLyU0MGlhbmRlbm5pc21pbGxlciUzQW1hdHJpeC5vcmcvJTIxZHZ0bGVFZnBGcEZNdnJRd1Z5JTNBbWF0cml4Lm9yZw"
+    on_success: change  # always|never|change
+    on_failure: always
+    on_start: never
